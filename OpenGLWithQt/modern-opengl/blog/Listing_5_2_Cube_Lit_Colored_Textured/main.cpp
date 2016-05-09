@@ -8,7 +8,7 @@
 #include <QtGui/QOpenGLVertexArrayObject>
 
 static QString vertexShader =
-        "#version 100\n"
+        "#version 120\n"
         "\n"
         "attribute vec3 vertexPosition;\n"
         "attribute vec3 vertexNormal;\n"
@@ -70,7 +70,7 @@ static QString vertexShader =
         ;
 
 static QString fragmentShader =
-        "#version 100\n"
+        "#version 120\n"
         "uniform sampler2D texUnit;\n"
         "\n"
         "varying vec3 v_color;\n"

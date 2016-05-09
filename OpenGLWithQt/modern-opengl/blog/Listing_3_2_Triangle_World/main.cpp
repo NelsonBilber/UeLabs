@@ -9,7 +9,7 @@
 #include <QtGui/QOpenGLVertexArrayObject>
 
 static QString vertexShader =
-        "#version 100\n"
+        "#version 120\n"
         "\n"
         "attribute vec3 position;\n"
         "attribute vec3 color;\n"
@@ -26,7 +26,7 @@ static QString vertexShader =
         ;
 
 static QString fragmentShader =
-        "#version 100\n"
+        "#version 120\n"
         "\n"
         "varying vec3 v_color;\n"
         "\n"
