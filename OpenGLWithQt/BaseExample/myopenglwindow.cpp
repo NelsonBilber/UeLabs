@@ -5,7 +5,7 @@
 #include <QtGui/QPainter>
 
 
-OpenGLWindow::OpenGLWindow(QWindow *parent)
+MyOpenGLWindow::MyOpenGLWindow(QWindow *parent)
     : QWindow(parent)
     , m_update_pending(false)
     , m_animating(false)
@@ -16,22 +16,21 @@ OpenGLWindow::OpenGLWindow(QWindow *parent)
 }
 
 
-OpenGLWindow::~OpenGLWindow()
+MyOpenGLWindow::~MyOpenGLWindow()
 {
     delete m_device;
 }
 
 
-void OpenGLWindow::render(QPainter *painter)
+void MyOpenGLWindow::render(QPainter *painter)
 {
     Q_UNUSED(painter);
 }
 
-void OpenGLWindow::initialize()
-{
+void MyOpenGLWindow::initialize(){
 }
 
-void OpenGLWindow::render()
+void MyOpenGLWindow::render()
 {
     if (!m_device)
         m_device = new QOpenGLPaintDevice;
@@ -44,7 +43,7 @@ void OpenGLWindow::render()
     render(&painter);
 }
 
-void OpenGLWindow::renderLater()
+void MyOpenGLWindow::renderLater()
 {
     if (!m_update_pending) {
         m_update_pending = true;
@@ -52,7 +51,7 @@ void OpenGLWindow::renderLater()
     }
 }
 
-bool OpenGLWindow::event(QEvent *event)
+bool MyOpenGLWindow::event(QEvent *event)
 {
     switch (event->type()) {
     case QEvent::UpdateRequest:
@@ -64,7 +63,7 @@ bool OpenGLWindow::event(QEvent *event)
     }
 }
 
-void OpenGLWindow::exposeEvent(QExposeEvent *event)
+void MyOpenGLWindow::exposeEvent(QExposeEvent *event)
 {
     Q_UNUSED(event);
 
@@ -72,7 +71,7 @@ void OpenGLWindow::exposeEvent(QExposeEvent *event)
         renderNow();
 }
 
-void OpenGLWindow::renderNow()
+void MyOpenGLWindow::renderNow()
 {
     if (!isExposed())
         return;
@@ -103,7 +102,7 @@ void OpenGLWindow::renderNow()
 }
 
 
-void OpenGLWindow::setAnimating(bool animating)
+void MyOpenGLWindow::setAnimating(bool animating)
 {
     m_animating = animating;
 

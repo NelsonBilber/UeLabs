@@ -1,3 +1,6 @@
+#ifndef MYOPENGLWINDOW_H
+#define MYOPENGLWINDOW_H
+
 #include <QtGui/QWindow>
 #include <QtGui/QOpenGLFunctions>
 
@@ -8,18 +11,16 @@ class QOpenGLPaintDevice;
 QT_END_NAMESPACE
 
 
-class OpenGLWindow : public QWindow, protected QOpenGLFunctions
+class MyOpenGLWindow : public QWindow, protected QOpenGLFunctions
 {
     Q_OBJECT
 public:
-    explicit OpenGLWindow(QWindow *parent = 0);
-    ~OpenGLWindow();
+    explicit MyOpenGLWindow(QWindow *parent = 0);
+    ~MyOpenGLWindow();
 
     virtual void render(QPainter *painter);
     virtual void render();
-
     virtual void initialize();
-
     void setAnimating(bool animating);
 
 public slots:
@@ -39,4 +40,4 @@ private:
     QOpenGLPaintDevice *m_device;
 };
 
-
+#endif

@@ -1,15 +1,18 @@
-QT += core gui opengl
+QT += core gui opengl widgets
 
 CONFIG += c++11
 
 TARGET = BaseExample
-CONFIG += console
+
 CONFIG -= app_bundle
 
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    myopenglwindow.cpp
+    myopenglwindow.cpp \
+    trianglewindow.cpp
 
 HEADERS += \
-    myopenglwindow.h
+    myopenglwindow.h \
+    trianglewindow.h
+
