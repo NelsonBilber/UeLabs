@@ -1,4 +1,4 @@
 # OpenGLWithQt
 
 
-Ler OpenGL using Qt Framework
+OpenGL using Qt Framework
