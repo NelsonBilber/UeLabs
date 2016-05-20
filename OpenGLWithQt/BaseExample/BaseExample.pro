@@ -16,3 +16,10 @@ HEADERS += \
     myopenglwindow.h \
     trianglewindow.h
 
+RESOURCES += \
+    shader.qrc
+
+DISTFILES += \
+    fshader.glsl \
+    vshader.glsl
+

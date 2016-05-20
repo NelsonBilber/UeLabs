@@ -1,21 +1,5 @@
 #include "trianglewindow.h"
-#include "myopenglwindow.h"
-
-static const char *vertexShaderSource =
-    "attribute highp vec4 posAttr;\n"
-    "attribute lowp vec4 colAttr;\n"
-    "varying lowp vec4 col;\n"
-    "uniform highp mat4 matrix;\n"
-    "void main() {\n"
-    "   col = colAttr;\n"
-    "   gl_Position = matrix * posAttr;\n"
-    "}\n";
-
-static const char *fragmentShaderSource =
-    "varying lowp vec4 col;\n"
-    "void main() {\n"
-    "   gl_FragColor = col;\n"
-    "}\n";
+#include "myopenglwindow.h"y
 
 
 TriangleWindow::TriangleWindow()
@@ -23,11 +7,21 @@ TriangleWindow::TriangleWindow()
     , m_frame(0)
 {}
 
- void TriangleWindow::initialize()
+void TriangleWindow::initialize()
 {
     m_program = new QOpenGLShaderProgram(this);
-    m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, vertexShaderSource);
-    m_program->addShaderFromSourceCode(QOpenGLShader::Fragment, fragmentShaderSource);
+    //m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, vertexShaderSource);
+    if(!m_program->addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.glsl" )){
+        qDebug() << "Vertex shader file not found";
+        close();
+    }
+
+    if(!m_program->addShaderFromSourceFile(QOpenGLShader::Fragment, ":/fshader.glsl" ))
+    {
+        qDebug() << "Fragment shader file not found";
+        close();
+    }
+
     m_program->link();
     m_posAttr = m_program->attributeLocation("posAttr");
     m_colAttr = m_program->attributeLocation("colAttr");
