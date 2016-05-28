@@ -1,5 +1,5 @@
 #include "trianglewindow.h"
-#include "myopenglwindow.h"y
+#include "myopenglwindow.h"
 
 
 TriangleWindow::TriangleWindow()
