@@ -16,7 +16,13 @@ class SPAWN_CPP_TO_BP_API AMyPlayerController : public APlayerController
 	
 public:
     AMyPlayerController();
-	
+
+	virtual void BeginPlay();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AMyActor> ActorClass;
+
+	UPROPERTY()
     AMyActor* ActorFromBP;
 	
 };
