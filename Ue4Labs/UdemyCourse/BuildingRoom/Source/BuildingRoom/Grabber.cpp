@@ -33,6 +33,36 @@ void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 
-	// ...
+	// GET PLAYER VIEW POINT THIS TICK
+   
+    auto World = GetWorld();
+    if(World){
+        FVector PlayerViewPointLocation;
+        FRotator PlayerViewPointRotation;
+        World->GetFirstPlayerController()->GetPlayerViewPoint(PlayerViewPointLocation, PlayerViewPointRotation );
+    
+        UE_LOG(LogTemp, Warning, TEXT("location %s , position %s "), *PlayerViewPointLocation.ToString(),*PlayerViewPointRotation.ToString());
+    
+        FVector LineTraceEnd = PlayerViewPointLocation + ( PlayerViewPointRotation.Vector() * Reach );
+        
+        DrawDebugLine(
+                      World,
+                      PlayerViewPointLocation,
+                      LineTraceEnd,
+                      FColor::Red,
+                      false,
+                      0.0f,
+                      0.0f,
+                      10.0f
+                      
+        );
+    
+    }
+    
+    
+    // ray-cast out to reach distance
+    
+    //see what we it
+
 }
 
