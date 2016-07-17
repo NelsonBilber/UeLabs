@@ -24,9 +24,37 @@ void UGrabber::BeginPlay()
 	// ...
     
     UE_LOG(LogTemp, Warning, TEXT("Grabber reporting for dutty !"));
+    
+    PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+    if(PhysicsHandle)
+    {
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("component fail  %s  to deal with physics handle"),
+                *(GetOwner()->GetName()) );
+        
+    }
+    
+    InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
+    if(InputComponent)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Input component found !"));
+        InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
+        
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("component fail  %s  to deal with input component"),
+               *(GetOwner()->GetName()) );
+        
+    }
 	
 }
 
+void UGrabber::Grab(){
+    
+}
 
 // Called every frame
 void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
