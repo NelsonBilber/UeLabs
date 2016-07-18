@@ -24,6 +24,14 @@ public:
 private:
     
     void Grab();
+    
+    void Release();
+    
+    void FindPhysicsHandleComponent();
+    
+    void SetupInputComponent();
+    
+    const FHitResult GetFirstPhysicsBodyInReach();
 		
     float Reach = 100.0f;
     
