@@ -32,6 +32,8 @@ private:
     void SetupInputComponent();
     
     const FHitResult GetFirstPhysicsBodyInReach();
+    
+    FVector GetReachLineEnd();
 		
     float Reach = 100.0f;
     
