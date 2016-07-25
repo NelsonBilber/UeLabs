@@ -52,15 +52,31 @@ void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompo
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 
-	// ...
-    if(PressurePlate){
-        if(PressurePlate->IsOverlappingActor(ActorThatOpensDoor)){
-            OpenTheDoor();
-            LastDoorOpenTime = GetWorld()->GetTimeSeconds();
-        }
-        if( GetWorld()->GetTimeSeconds() - LastDoorOpenTime > DoorCloseDelay ){
-            CloseDoor();
-        }
+    if(GetTotalMassOfActorsOnPlate() > 30.f)
+    {
+        OpenTheDoor();
+        LastDoorOpenTime = GetWorld()->GetTimeSeconds();
     }
+    
+	
+    if( GetWorld()->GetTimeSeconds() - LastDoorOpenTime > DoorCloseDelay ){
+        CloseDoor();
+    }
+    
+}
+
+float UOpenDoor::GetTotalMassOfActorsOnPlate(){
+    float TotalMass = 0.f;
+    
+    TArray< AActor* > OverlappingActors;
+    PressurePlate->GetOverlappingActors(OverlappingActors);
+    
+    for(const auto& Actor: OverlappingActors)
+    {
+        TotalMass += Actor->FindComponentByClass< UPrimitiveComponent >()->GetMass();
+    }
+    
+    return TotalMass;
+
 }
 

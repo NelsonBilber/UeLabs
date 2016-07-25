@@ -24,6 +24,8 @@ public:
     void OpenTheDoor();
     
     void CloseDoor();
+    
+    float GetTotalMassOfActorsOnPlate();
 
 private:
     UPROPERTY(VisibleAnywhere)
