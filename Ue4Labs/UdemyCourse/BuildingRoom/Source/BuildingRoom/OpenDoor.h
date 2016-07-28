@@ -6,6 +6,8 @@
 #include "OpenDoor.generated.h"
 
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDoorEvent);
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BUILDINGROOM_API UOpenDoor : public UActorComponent
 {
@@ -26,6 +28,12 @@ public:
     void CloseDoor();
     
     float GetTotalMassOfActorsOnPlate();
+    
+    UPROPERTY(BlueprintAssignable)
+    FDoorEvent OnOpen;
+    
+    UPROPERTY(BlueprintAssignable)
+    FDoorEvent OnClose;
 
 private:
     UPROPERTY(VisibleAnywhere)

@@ -30,19 +30,23 @@ void UOpenDoor::BeginPlay()
 
 void UOpenDoor::OpenTheDoor(){
     
-    FRotator NewRotation = FRotator(0.0f, 90.0f, 0.0f);
-   
+    //FRotator NewRotation = FRotator(0.0f, 90.0f, 0.0f);
+    //if(Owner)
+    //    Owner->SetActorRotation(NewRotation);
+    
     if(Owner)
-        Owner->SetActorRotation(NewRotation);
+       OnOpen.Broadcast();
     
 }
 
 void UOpenDoor::CloseDoor(){
     
-    FRotator NewRotation = FRotator(0.0f, 0.0f, 0.0f);
+    //FRotator NewRotation = FRotator(0.0f, 0.0f, 0.0f);
    
-    if(Owner)
-        Owner->SetActorRotation(NewRotation);
+    //if(Owner)
+    //    Owner->SetActorRotation(NewRotation);
+    
+    OnClose.Broadcast();
     
 }
 
@@ -52,7 +56,7 @@ void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompo
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 
-    if(GetTotalMassOfActorsOnPlate() > 30.f)
+    if(GetTotalMassOfActorsOnPlate() >= 0.f)
     {
         OpenTheDoor();
         LastDoorOpenTime = GetWorld()->GetTimeSeconds();
@@ -66,7 +70,7 @@ void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompo
 }
 
 float UOpenDoor::GetTotalMassOfActorsOnPlate(){
-    float TotalMass = 0.f;
+    float TotalMass = 0.1f;
     
     TArray< AActor* > OverlappingActors;
     PressurePlate->GetOverlappingActors(OverlappingActors);
