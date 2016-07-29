@@ -9,7 +9,6 @@ UGrabber::UGrabber()
 {
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
-
 }
 
 
@@ -24,7 +23,8 @@ void UGrabber::BeginPlay()
 	
 }
 
-void UGrabber::FindPhysicsHandleComponent(){
+void UGrabber::FindPhysicsHandleComponent()
+{
     
     UE_LOG(LogTemp, Warning, TEXT("Grabber reporting for dutty !"));
     
@@ -37,7 +37,8 @@ void UGrabber::FindPhysicsHandleComponent(){
     }
 }
 
-void UGrabber::SetupInputComponent(){
+void UGrabber::SetupInputComponent()
+{
    
     InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
     if(InputComponent)
@@ -55,7 +56,8 @@ void UGrabber::SetupInputComponent(){
     }
 }
 
-void UGrabber::Grab(){
+void UGrabber::Grab()
+{
     
     UE_LOG(LogTemp, Warning, TEXT("Grab !"));
     
@@ -75,7 +77,8 @@ void UGrabber::Grab(){
     
 }
 
-void UGrabber::Release(){
+void UGrabber::Release()
+{
     
     UE_LOG(LogTemp, Warning, TEXT("Release !"));
     
@@ -89,18 +92,14 @@ void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
     
-   
-        if(PhysicsHandle->GrabbedComponent)
-        {
-            PhysicsHandle->SetTargetLocation(GetReachLineEnd());
-        }
+    if(PhysicsHandle->GrabbedComponent)
+    {
+        PhysicsHandle->SetTargetLocation(GetReachLineEnd());
+    }
 }
 
-
-
-
-
- const FHitResult UGrabber::GetFirstPhysicsBodyInReach(){
+const FHitResult UGrabber::GetFirstPhysicsBodyInReach()
+{
      // GET PLAYER VIEW POINT THIS TICK
      
      FHitResult HitResult;
@@ -126,8 +125,6 @@ void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompon
          
          // (line trace)ray-cast out to reach distance
          
-         
-         
          FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
          GetWorld()->LineTraceSingleByObjectType(
                                                  HitResult,
@@ -148,8 +145,8 @@ void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompon
  }
 
 
-FVector UGrabber::GetReachLineEnd(){
-
+FVector UGrabber::GetReachLineEnd()
+{
     FVector LineTraceEnd;
     auto World = GetWorld();
     
