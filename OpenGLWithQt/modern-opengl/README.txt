@@ -1,1 +1,0 @@
-Examples from => http://www.ics.com/blog/fixed-function-modern-opengl-part-1-4

@@ -1,10 +1,6 @@
-# computer-graphics
+# Unreal Engine 
 
-Samples using computer graphics stuff like vtk, OpenCV, ..
+Explore graphics a AAA game engine
 
+You need to **copy Contents folder (650MB)** to compile source code examples from https://docs.unrealengine.com/latest/INT/Programming/Tutorials/index.html
 
-
-
-## UeLabs
-
-Basics and some tuturials how to deal with AAA game engine Unreal Engine
