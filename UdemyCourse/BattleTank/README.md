@@ -14,3 +14,4 @@ Samples and drafts about code from udemy course The Unreal Engine Developer Cour
 7. Actors from Multiple Meshes (mount an actor using multiple meshes and sockets)
 8. Setup **GameMode** using Blueprints
 9. Set up a **Default Pawn in GameMode**
+10. 3rd Person Camera Control using Blueprints
