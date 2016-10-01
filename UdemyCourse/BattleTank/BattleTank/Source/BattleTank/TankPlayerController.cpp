@@ -10,9 +10,12 @@ void ATankPlayerController::BeginPlay()
     
     auto ControlledTank = GetGameControlledTank();
     
-    if(ControlledTank) {
+    if(ControlledTank)
+    {
         UE_LOG(LogTemp, Warning, TEXT("Player Controller BeginPlay() possessing %s "), *(ControlledTank->GetName()));
-    } else  {
+    }
+    else
+    {
         UE_LOG(LogTemp, Warning, TEXT("Player Controller BeginPlay() NOT possessing a Tank "));
     }
 }
@@ -38,12 +41,11 @@ void ATankPlayerController::AimTowardsCrosshair()
     }
     
     //Get world location if line trace throught crosshair
-    
-    FVector HitLocation; //parameter
+     FVector HitLocation; //parameter
     
     if(GetSightRayHitLocation(HitLocation))
     {
-        UE_LOG(LogTemp, Warning, TEXT("Hit location: %s "), *(HitLocation.ToString()));
+        //UE_LOG(LogTemp, Warning, TEXT("Hit location: %s "), *(HitLocation.ToString()));
     
         //if hits the landscape tell controlled tank to aim ait this point
     }
@@ -53,7 +55,19 @@ void ATankPlayerController::AimTowardsCrosshair()
 bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 {
     
-    HitLocation = FVector(1.0);
+    //HitLocation = FVector(1.0);
+    
+    //Find the cross air
+    int32 ViewPortSizeX, ViewPortSizeY;
+    GetViewportSize(ViewPortSizeX, ViewPortSizeY);
+    
+    auto ScreenLocation = FVector2D(ViewPortSizeX * CrosshairXLocation, ViewPortSizeY * CrosshairYLocation);
+    
+    UE_LOG(LogTemp, Warning, TEXT("ScreenLocation: %s"), *ScreenLocation.ToString());
+    
+    //De-project
+    
+    //line-trace along that look direction
     
     return true;
 }
