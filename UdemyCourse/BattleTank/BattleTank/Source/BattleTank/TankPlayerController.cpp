@@ -42,10 +42,9 @@ void ATankPlayerController::AimTowardsCrosshair()
     
 
     FVector HitLocation; //parameter
-    
     if(GetSightRayHitLocation(HitLocation))
     {
-        //UE_LOG(LogTemp, Warning, TEXT("Hit location: %s "), *(HitLocation.ToString()));
+        UE_LOG(LogTemp, Warning, TEXT("Hit location: %s "), *(HitLocation.ToString()));
         //if hits the landscape tell controlled tank to aim ait this point
     }
 }
@@ -53,8 +52,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 //Checks it hits landscape
 bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 {
-  
-    //Find the cross air
     int32 ViewPortSizeX, ViewPortSizeY;
     GetViewportSize(ViewPortSizeX, ViewPortSizeY);
     auto ScreenLocation = FVector2D(ViewPortSizeX * CrosshairXLocation, ViewPortSizeY * CrosshairYLocation);
@@ -63,12 +60,30 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
     FVector LookDirection;
     if(GetLookDirection(ScreenLocation, LookDirection))
     {
-        UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s "), *(LookDirection.ToString()));
+        //line-trace along that look direction
+        //UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s "), *(LookDirection.ToString()));
+        GetLookVectorHitLocation(LookDirection, HitLocation);
     }
     
-    //line-trace along that look direction
-    
     return true;
+}
+
+bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const
+{
+    FHitResult HitResult;
+    auto Startlocation = PlayerCameraManager->GetCameraLocation(); //Get Current Camera Location
+    auto Endlocation = Startlocation + (LookDirection * LineTraceRange);
+    
+    if(GetWorld()->LineTraceSingleByChannel(
+                                            HitResult,
+                                            Startlocation,
+                                            Endlocation,
+                                            ECollisionChannel::ECC_Visibility )) {
+        HitLocation = HitResult.Location;
+        return true;
+    }
+    HitLocation = FVector(0);
+    return false;
 }
 
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const
