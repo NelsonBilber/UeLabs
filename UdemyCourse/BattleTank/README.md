@@ -15,3 +15,13 @@ Samples and drafts about code from udemy course The Unreal Engine Developer Cour
 8. Setup **GameMode** using Blueprints
 9. Set up a **Default Pawn in GameMode**
 10. 3rd Person Camera Control using Blueprints
+11. UMG's
+12. Intro Menu, Screenplay
+13. Delegating to components
+14. Virtual and override
+15. AIControllerClass
+16. PlayerController
+17. Out parameters
+18. Screen pixel Coordinates 
+19. DeprojectScreenToWorld
+20. LineTraceSingleByChannel
