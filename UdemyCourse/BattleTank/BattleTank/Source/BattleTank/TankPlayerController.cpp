@@ -44,8 +44,8 @@ void ATankPlayerController::AimTowardsCrosshair()
     FVector HitLocation; //parameter
     if(GetSightRayHitLocation(HitLocation))
     {
-        UE_LOG(LogTemp, Warning, TEXT("Hit location: %s "), *(HitLocation.ToString()));
         //if hits the landscape tell controlled tank to aim ait this point
+        GetGameControlledTank()->AimAt(HitLocation);
     }
 }
 
