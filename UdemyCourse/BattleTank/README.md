@@ -29,3 +29,7 @@ Samples and drafts about code from udemy course The Unreal Engine Developer Cour
 22. Invoke UstaticMesnh
 23. CreateDefaultSubObjects in C++
 24. BlueprintCallable
+25. Project Claculations
+26. FRotators
+27. Forward Declarations
+28. BlueprintSpwanbleComponent
