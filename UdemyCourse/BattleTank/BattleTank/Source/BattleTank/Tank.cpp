@@ -50,14 +50,11 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
-	
-	
-
 	if (!Barrel) 
 		return;
 
 	auto Location = Barrel->GetSocketLocation(FName("Projectile"));
-	Location.Y += Location.Y + 1000;
+	Location.X += Location.X + 10;
 	auto Rotation = Barrel->GetSocketRotation(FName("Projectile"));
 	auto Time = GetWorld()->GetTimeSeconds();
 
