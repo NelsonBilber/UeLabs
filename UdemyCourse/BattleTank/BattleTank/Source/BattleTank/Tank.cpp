@@ -57,8 +57,7 @@ void ATank::Fire()
 		return;
 
 	auto Location = Barrel->GetSocketLocation(FName("Projectile"));
-	Location.X += Location.X + 100;
-	Location.Y += Location.Y + 100;
+	Location.Y += Location.Y + 1000;
 	auto Rotation = Barrel->GetSocketRotation(FName("Projectile"));
 	auto Time = GetWorld()->GetTimeSeconds();
 
