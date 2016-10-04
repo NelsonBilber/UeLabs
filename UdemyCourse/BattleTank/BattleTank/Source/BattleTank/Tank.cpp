@@ -50,22 +50,25 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
-	if (!Barrel) 
-		return;
+	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 
-	auto Location = Barrel->GetSocketLocation(FName("Projectile"));
-	auto Rotation = Barrel->GetSocketRotation(FName("Projectile"));
-	
-	//auto Time = GetWorld()->GetTimeSeconds();
-	//UE_LOG(LogTemp, Warning, TEXT("%f: Tank fire at location %s and Rotation %s"), Time, *Location.ToString(), *Rotation.ToString());
+	if (Barrel && isReloaded) {
 
-	//Spawn a projectile at the socket location on the barrel
-	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-										ProjectileBlueprint,
-										Location,
-										Rotation 
-		);
+		auto Location = Barrel->GetSocketLocation(FName("Projectile"));
+		auto Rotation = Barrel->GetSocketRotation(FName("Projectile"));
 
-	Projectile->LaunchProjectile(LaunchSpeed);
+		auto Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f: Tank fire at location %s and Rotation %s"), Time, *Location.ToString(), *Rotation.ToString());
+
+		//Spawn a projectile at the socket location on the barrel
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+			ProjectileBlueprint,
+			Location,
+			Rotation
+			);
+
+		Projectile->LaunchProjectile(LaunchSpeed);
+		LastFireTime = FPlatformTime::Seconds();
+	}
 }
  
