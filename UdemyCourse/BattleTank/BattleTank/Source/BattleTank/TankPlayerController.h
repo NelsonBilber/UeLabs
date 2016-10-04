@@ -32,13 +32,13 @@ private:
     
     bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
     
-    UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
     float CrosshairXLocation = 0.5;
     
-    UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
     float CrosshairYLocation = 0.33;
     
-    UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
     float LineTraceRange = 1000000; //10 km because in Ue4 Messures are in cm
 	
 };
