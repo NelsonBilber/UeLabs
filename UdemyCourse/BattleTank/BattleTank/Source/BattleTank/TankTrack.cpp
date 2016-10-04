@@ -9,7 +9,7 @@ void UTankTrack::SetThrottle(float Throttle)
 {
 	//auto Time = GetWorld()->GetTimeSeconds();
 	auto Name = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%s Throte %f"), *Name, Throttle);
+	//UE_LOG(LogTemp, Warning, TEXT("%s Throte %f"), *Name, Throttle);
 
 	if (GetOwner())
 	{

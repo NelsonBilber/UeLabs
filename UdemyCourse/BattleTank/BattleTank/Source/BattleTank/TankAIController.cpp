@@ -23,9 +23,7 @@ void ATankAIController::Tick( float DeltaTime )
 
 		// Aim towards the player
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
-
-		UE_LOG(LogTemp, Warning, TEXT(" AIController aim to %f"), *PlayerTank->GetActorLocation().ToString());
-
+		//UE_LOG(LogTemp, Warning, TEXT(" AIController aim to %f"), *PlayerTank->GetActorLocation().ToString());
 		ControlledTank->Fire(); // TODO limit firing rate
 	}
 }
