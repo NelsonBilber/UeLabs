@@ -1,6 +1,7 @@
 #include "BattleTank.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
+#include "TankTrack.h"
 #include "TankAimingComponent.h"
 
 
