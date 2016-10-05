@@ -33,3 +33,12 @@ Samples and drafts about code from udemy course The Unreal Engine Developer Cour
 26. FRotators
 27. Forward Declarations
 28. BlueprintSpwanbleComponent
+29. Using Clamp() to Limit values
+30. Turret Rotation
+31. Setup projectiles
+32. SpawnActor<> to Spawn
+33. Projectile Movemement
+34. Making AI Fires
+35. EditAnyWhere vs EditDefaults
+36. Quit button
+37. Track Throtlles
