@@ -1,7 +1,8 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
 #include "BattleTank.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
-#include "TankTrack.h"
 #include "TankAimingComponent.h"
 
 
@@ -35,7 +36,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
 	bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity
-		(
+	(
 		this,
 		OutLaunchVelocity,
 		StartLocation,
@@ -45,17 +46,14 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		0,
 		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace // Paramater must be present to prevent bug
-		);
+	);
 
 	if (bHaveAimSolution)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT(" No Aim Solution ..."));
-	}
+	// If no solution found do nothing
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
