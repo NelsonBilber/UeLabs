@@ -30,6 +30,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Input)
 	void IntendTurnLeft(float Throw);
+    
+    virtual void RequestDirectMove(const FVector& MoveVelocity, bool bFroceMaxSpeed) override;
 
 private:
 	UTankTrack* LeftTrack = nullptr;
