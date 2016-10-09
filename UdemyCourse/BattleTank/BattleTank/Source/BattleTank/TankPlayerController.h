@@ -6,7 +6,7 @@
 #include "TankPlayerController.generated.h" // Must be the last include
 
 class ATank;
-
+class TankAimingComponent;
 /**
  * 
  */
@@ -20,11 +20,12 @@ protected:
     UFUNCTION(BlueprintCallable, Category = "Setup")
     ATank* GetControlledTank() const;
     
+    UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+    void FoundAimingComponent(UTankAimingComponent* AimRef);
+    
 	
 private:
-    
-   
-	virtual void BeginPlay() override;
+    virtual void BeginPlay() override;
 
 	virtual void Tick( float DeltaTime ) override;
 
