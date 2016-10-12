@@ -7,7 +7,6 @@
 
 // Forward declarations
 class UTankBarrel;
-class UTankAimingComponent;
 class UTankMovementComponent;
 class AProjectile;
 
@@ -17,21 +16,19 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
-
 	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
 
 protected:
-    UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent* TankAimingComponent = nullptr;
 
-	UPROPERTY(BlueprintReadOnly)
+    UPROPERTY(BlueprintReadOnly)
 	UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
-	// Sets default values for this pawn's properties
+	
+    // Sets default values for this pawn's properties
 	ATank();
     
     virtual void BeginPlay() override;
