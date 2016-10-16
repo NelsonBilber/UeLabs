@@ -4,7 +4,14 @@
 
 ATank::ATank()
 {
-    PrimaryActorTick.bCanEverTick = false;
+    PrimaryActorTick.bCanEverTick = true;
+}
+
+void ATank::BeginPlay()
+{
+    Super::BeginPlay();
+    
+    CurrentHealth = StartingHealth;
 }
 
 
