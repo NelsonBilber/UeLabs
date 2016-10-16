@@ -42,3 +42,24 @@ Samples and drafts about code from udemy course The Unreal Engine Developer Cour
 35. EditAnyWhere vs EditDefaults
 36. Quit button
 37. Track Throtlles
+38. ApplyForceAtlocation()
+39. Physics materials & Friction
+40. BlueprintReadOnly
+41. Component Architecure
+42. AI PathFinding
+43. RequestDirectMove
+44. DotProduct
+45. CrossProduct
+46. BlueprintVariables
+47. BlueprintImplementableEvent
+48. DependecyMapping
+49. Programmatic sideways friction
+50. Reference Viewer
+51. Particle Systems
+52. FAttachmentTransformRules
+53. Radial Forces
+54. GetTimerManager
+55. TakeDamage
+56. BlueprintPure
+57. The Observe Pattern
+58. Switching Cameras
