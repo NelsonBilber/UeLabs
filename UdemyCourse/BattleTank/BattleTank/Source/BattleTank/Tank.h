@@ -16,15 +16,20 @@ class BATTLETANK_API ATank : public APawn
 
 public:
     
-    ATank();
-    
     virtual float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser) override;
+    
+    UFUNCTION(BlueprintPure, category = "Helth")
+    float GetHealthPercent() const;
+    
 protected:
 
     UPROPERTY(BlueprintReadOnly)
 	UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
+    
+    ATank();
+    
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
     int32 StartingHealth = 100;
     
